@@ -1,0 +1,15 @@
+//- extends index.pug
+
+block deleteForm
+  .main.container
+    .row
+      .col-md-6.col-md-offset-3
+        h1.display-4.m-b-2 User delete
+
+        //-register form
+        form(method='DELETE' action='/register')
+          div.form-group
+            label(for='userId') userId:
+            input#userId.form-control(type='text',
+            placeholder='first and last' userId='userId')
+          button.btn.btn-primary(type='submit') delete

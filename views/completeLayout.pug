@@ -1,0 +1,29 @@
+html
+  head
+    title 
+    h1 My super duper site
+
+  body
+  .main.container
+    .row
+      .col-md-6.col-md-offset-3
+        h1.display-4.m-b-2 'User create'
+        - let userName = 'ToTo';
+        // register form
+        form(method='PUT' action='/register')
+          div.form-group
+            label(for='userName') userName:
+            input#userName.form-control(type='text', placeholder='first and last' userName='userName')
+          button.btn.btn-primary(type='submit') update
+    
+    .row
+      .col-md-6.col-md-offset-3
+        h1.display-4.m-b-2 User delete
+        // delete form
+        form(method='DELETE' action='/register')
+          div.form-group
+            label(for='userId') userId:
+            input#userId.form-control(type='text',
+            placeholder='first and last' userId='userId')
+          button.btn.btn-primary(type='submit') delete
+          

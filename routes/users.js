@@ -1,37 +1,39 @@
-var express = require('express');
-var router = express.Router();
+var express = require('express')
+var router = express.Router()
 
 const userName = 'unregistered_user'
-const userId = 0 
+const userId = 0
 // userId = [] ??
 
-const userUpdate = require('../views/update-user.pug');
-const userDelete = require('../views/delete-user.pug');
+// const userUpdate = require('/home/wilder/Exercices_Coding/WCS-Exercises-Node/views/register_form.pug')
+// const userDelete = require('../views/delete_form.pug')
+
+const layout = require('/home/wilder/Exercices_Coding/WCS-Exercises-Node/views/layout.pug')
 
 // Get user form by userName
-router.get(`/users/${userName}`, function(req, res, next) {
-  res.render('userform', `${userUpdate}`);
+router.get(`/users/${userName}`, function (req, res, next) {
+  res.render('userform', `${layout}`)
   // res.send(`${userUpdate}`)
   // res.send('../views/update-user.pug');
-});
+})
 
 // Get user delete form
-router.get(`/users/${userName}`, function(req, res, next) {
-  res.render('userform', `${userDelete}`);
-});
+router.get(`/users/${userName}`, function (req, res, next) {
+  res.render('userform', `${layout}`)
+})
 
 // modify user by id
-router.put('/users/([A-Z])\w+', function(req, res, next) {
-  res.send(`The new name is ${userId}`);
-});
+router.put('/users/([A-Z])w+', function (req, res, next) {
+  res.send(`The new name is ${userId}`)
+})
 
 // delete user by id
-router.delete('/users/([0-9])\W+', function(req, res, next) {
-  res.send(`${userDelete}`)
+router.delete('/users/([0-9])W+', function (req, res, next) {
+  res.send(`${layout}`)
   // res.send(`no more user with id ${prenom}`);
-});
+})
 
-module.exports = router;
+module.exports = router
 
 // /* GET users listing. */
 // router.get('/', function(req, res, next) {
