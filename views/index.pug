@@ -3,18 +3,18 @@
 //- const update = require('register_form')
 //- const delete = require('delete_form')
 
-//- html
-//-   head
-//-     title 
-//-     h1 My super duper site
-//-     //- block scripts
-//-     //-   script(src='/jquery.js')
-//-   body
-//-     include register_form.pug
-//-     //- block register_form
-//-     //- block delete_form
-//-       //- #footer
-//-       //-   p a random footer content
+html
+  head
+    title 
+    h1 My super duper site
+    //- block scripts
+    //-   script(src='/jquery.js')
+  body
+    h1 User form
+    block updateUser
+    block deleteUser
+      //- #footer
+      //-   p a random footer content
 
 //- BEFORE
 //- extends layout.pug

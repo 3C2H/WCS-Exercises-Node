@@ -1,0 +1,11 @@
+extends index.pug
+
+block updateUser
+  h1.display-4.m-b-2 'Update user'
+  - let userName = 'ToTo';
+  // register form
+  form(method='POST' action='/user?_method=PUT')
+    div.form-group
+      label(for='userName') userName:
+      input#userName.form-control(type='text', placeholder='first and last' userName='userName')
+    button.btn.btn-primary(type='submit') update

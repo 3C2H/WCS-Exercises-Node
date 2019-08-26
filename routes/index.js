@@ -1,27 +1,31 @@
 const express = require('express')
-// const bodyParser = require('body-parser')
+const bodyParser = require('body-parser')
+const app = express()
 
-const router = express()
+app.use(bodyParser.urlencoded({ extended: true }))
 
-// router.use(bodyParser.urlencoded({ extended: true }))
-
-router.listen(3000, err => {
+app.listen(3000, err => {
   if (err) {
     console.log(err)
     return
   }
   console.log('connect on 3000')
-  // res.render('index', { title: 'Express' });
 })
 
-module.exports = router
+// pug render
+app.get('/', function (req, res) {
+  res.render('index')
+})
 
-// // GET home page.
-// router.get('/', function(req, res) {
-//    res.redirect('/catalog');
-//  });
+// app.get('/users', function (req, res) {
+//   res.sendFile('index.html', { root: views })
+// })
 
-// /* GET home page. */
-// router.get('/', function(req, res, next) {
-//   res.render('index', { title: 'Express' });
-// });
+// app.get('/users', function (req, res) {
+//   res.render('index.html')
+// })
+// app.get('/', function (req, res) {
+//   res.redirect('/users')
+// })
+
+module.exports = app

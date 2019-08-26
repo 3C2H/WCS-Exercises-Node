@@ -1,49 +1,49 @@
-var express = require('express')
-var router = express.Router()
-
+const express = require('express')
+const appRouter = express.Router()
 const userName = 'unregistered_user'
-const userId = 0
-// userId = [] ??
 
-// const userUpdate = require('/home/wilder/Exercices_Coding/WCS-Exercises-Node/views/register_form.pug')
-// const userDelete = require('../views/delete_form.pug')
-
-const layout = require('/home/wilder/Exercices_Coding/WCS-Exercises-Node/views/layout.pug')
-
-// Get user form by userName
-router.get(`/users/${userName}`, function (req, res, next) {
-  res.render('userform', `${layout}`)
-  // res.send(`${userUpdate}`)
-  // res.send('../views/update-user.pug');
+// Get update-user form
+appRouter.get(`/users/${userName}?`, function (req, res, next) {
+  res.render('update-user')
 })
 
-// Get user delete form
-router.get(`/users/${userName}`, function (req, res, next) {
-  res.render('userform', `${layout}`)
+// Get delete-user form
+appRouter.get(`/users/${userName}?`, function (req, res, next) {
+  res.render('delete-user')
+})
+// TODO: diferentiate the 2 pug files
+
+// modify user
+appRouter.put('/users/([A-Z])w+', function (req, res, next) {
+  req.body(`The new name is ${userName}`)
 })
 
-// modify user by id
-router.put('/users/([A-Z])w+', function (req, res, next) {
-  res.send(`The new name is ${userId}`)
+// delete user
+appRouter.delete('/users/([0-9])W+', function (req, res, next) {
+  req.body(userName)
 })
 
-// delete user by id
-router.delete('/users/([0-9])W+', function (req, res, next) {
-  res.send(`${layout}`)
-  // res.send(`no more user with id ${prenom}`);
-})
+// // Concise version
+// appRouter.route('/users')
+//   .get(function (req, res) {
+//     req.send('update-user')
+//   })
+//   .get(function (req, res) {
+//     req.send('delete-user')
+//   })
+//   .put(function (req, res) {
+//     req.body(`The new name is ${userId}`)
+//   })
+//   .delete(function (req, res) {
+//     res.delete(userName)
+//   })
 
-module.exports = router
-
-// /* GET users listing. */
-// router.get('/', function(req, res, next) {
-//   res.send('respond with a resource');
-// });
+module.exports = appRouter
 
 // // LEVEL 1 EX
-// router.get('/forms-:numeroForm(\\d+)', (req, res) => res.end() );
+// appRouter.get('/forms-:numeroForm(\\d+)', (req, res) => res.end() );
 
-// router.post('/forms-:numeroForm(\\d+)', (req, res) => {
+// appRouter.post('/forms-:numeroForm(\\d+)', (req, res) => {
 //    res.send(req.body.userName)
 //    console.log(req.params.numeroForm)
 //    console.log(req.query.level)
